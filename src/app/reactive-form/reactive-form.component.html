@@ -1,0 +1,22 @@
+<p>Reactive Form</p>
+<form [formGroup]="myForm" (ngSubmit) = "onSubmit()">
+   <!-- <div ngModelGroup="details" > -->
+    <label for="name">Full Name</label> <input type="text" formControlName="username"  >
+    <label for="Address">Address</label> <input type="text" formControlName="address"  >
+    <label for="City">City</label> <input type="text" formControlName="city"  >
+    <label for="Email">Email</label> <input type="email" formControlName="email"  >
+    <label for="Phone No">Phone No</label> <input type="number" formControlName="phoneNumber"  >
+    <label for="Password">Password</label> <input type="password" formControlName="password"  >
+    <label for="cPassword">Confirm Password</label> <input type="password" formControlName="cPassword"  >
+    <input type = "submit" value = "submit">
+   <!-- </div> -->
+</form>
+<div *ngIf="visible">
+  <p>Full Name:{{ myForm.value.username}}</p>
+  <p>Email: {{ myForm.value.email}}</p>
+  <p>Email: {{ myForm.value.email}}</p>
+  <p>Email: {{ myForm.value.email}}</p>
+  <p>Phoen Number: {{ myForm.value.phoneNumber}}</p>
+  <p>Password:{{ myForm.value.password}}</p>
+  <p>Confirm Password:{{ myForm.value.cPassword}}</p>
+</div>
