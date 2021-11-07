@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -7,23 +7,26 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./reactive-form.component.scss']
 })
 export class ReactiveFormComponent implements OnInit {
-  myForm: FormGroup
+  myForm!: FormGroup;
   visible: boolean = false;
-  constructor() {
-    this.myForm = new FormGroup({
-      username: new FormControl("Atts"),
-      email: new FormControl(""),
-      address: new FormControl(""),
-      city: new FormControl(""),
-      phoneNumber: new FormControl(""),
-      password: new FormControl(""),
-      cPassword: new FormControl(""),
+  constructor(private fb:FormBuilder) {
+    this.createForm()
+  }
+  createForm(){
+    this.myForm =this.fb.group({
+      username: [null,Validators.required],
+      email:  [null,Validators.required],
+      address:  [null,Validators.required],
+      city: [null,Validators.required],
+      phoneNumber: [null,Validators.min(10)],
+      password:  [null,Validators.required],
+      cPassword:  [null,Validators.required],
     })
   }
 
   ngOnInit(): void {  }
   onSubmit() {
-    if (this.myForm.value) {
+    if (this.myForm.valid) {
       this.visible = true
     }
   }
