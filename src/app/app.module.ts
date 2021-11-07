@@ -6,12 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { ConfirmEqualValidatorDirective } from './confirm-equal-validator.directive';
+import { PasswordMatchDirective } from './template-driven/passwordMatch.directive';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,PasswordMatchDirective,
     TemplateDrivenComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    ConfirmEqualValidatorDirective
   ],
   imports: [
     BrowserModule,FormsModule,ReactiveFormsModule,

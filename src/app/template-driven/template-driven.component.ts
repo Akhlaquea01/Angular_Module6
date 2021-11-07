@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateDrivenComponent implements OnInit {
    visible = false
+   model: any = {};
   constructor() { }
 
   ngOnInit(): void {
@@ -14,7 +15,10 @@ export class TemplateDrivenComponent implements OnInit {
   onClickSubmit(value: any) {
 
     if (value) {
+    //  if( value.phoneNumber.length>10){
+      // alert('Phone number is not valid')
       this.visible = true
+    //  };
     }
     console.log(value);
   }

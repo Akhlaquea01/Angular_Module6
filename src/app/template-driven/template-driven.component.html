@@ -1,12 +1,12 @@
 <p>Template-Driven Form</p>
-<form #myForm="ngForm"  (ngSubmit) = "onClickSubmit(myForm.value)">
+<form #myForm="ngForm"  (ngSubmit) = "myForm.form.valid && onClickSubmit(myForm.value)">
    <div ngModelGroup="details" >
-    <label for="name">Full Name</label> <input type="text" name="username" ngModel >
-    <label for="Email">Email</label> <input type="email" name="email" ngModel >
-    <label for="Phone No">Phone No</label> <input type="number" name="phoneNumber" ngModel >
-    <label for="Password">Password</label> <input type="password" name="password" ngModel >
-    <label for="cPassword">Confirm Password</label> <input type="password" name="cPassword" ngModel >
-    <input type = "submit" value = "submit">
+    <label for="name">Full Name</label> <input type="text" name="username" [(ngModel)]="model.username"  required>
+    <label for="Email">Email</label> <input type="email" name="email" [(ngModel)]="model.email" required email pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    <label for="Phone No">Phone No</label> <input type="number" name="phoneNumber" minlength="10" [(ngModel)]="model.phoneNumber" required >
+    <label for="Password">Password</label> <input type="password" name="password" [(ngModel)]="model.password" passwordMatch required>
+    <label for="cPassword">Confirm Password</label> <input type="password" name="cPassword" [(ngModel)]="model.cPassword" passwordMatch required>
+    <input type = "submit" value = "submit" [disabled]="!myForm.valid">
    </div>
 </form>
 <div *ngIf="visible">
